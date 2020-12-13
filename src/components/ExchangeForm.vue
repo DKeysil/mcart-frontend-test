@@ -1,34 +1,46 @@
 <template>
-<div v-if="CurrencyList">
-  <form @submit.prevent="onSubmit" id="exchange-form">
-        <label for="VAL_NM_RQ-input">Выберите валюту:</label>
-        <select name="VAL_NM_RQ-input" id="VAL_NM_RQ-input" form="exchange-form" v-model="VAL_NM_RQ">
-            <option v-for="currency in CurrencyList" :key=currency[0] :value=currency[0]>{{currency[0]}} - {{currency[1]}}</option>
-        </select>
+<div v-if="CurrencyList" class="container">
+    <form @submit.prevent="onSubmit" id="exchange-form">
+        <div class="row">
+            <label for="VAL_NM_RQ-input">Выберите валюту:</label>
+            <select class="form-control form-control-lg" name="VAL_NM_RQ-input" id="VAL_NM_RQ-input" form="exchange-form" v-model="VAL_NM_RQ">
+                <option v-for="currency in CurrencyList" :key=currency[0] :value=currency[0]>{{currency[0]}} - {{currency[1]}}</option>
+            </select>
+        </div>
+        <div class="row">
 
-        <label for="date_req1-input">
-            Начальная дата
-        </label>
+            <label for="date_req1-input">
+                Начальная дата
+            </label>
 
-        <input
-            id="date_req1-input"
-            type="date"
-            v-model="date_req1"
-        />
-        <label for="date_req2-input">
-            Конечная дата
-        </label>
+            <input
+                id="date_req1-input"
+                type="date"
+                v-model="date_req1"
+                class="form-control"
+            />
+        </div>
+            <div class="row">
+            <label for="date_req2-input">
+                Конечная дата
+            </label>
 
-        <input
-            id="date_req2-input"
-            type="date"
-            v-model="date_req2"
-        />
 
-        <button type="submit">Получить</button>
-    </form>
-    <ExchangeRateResult v-if="result" :title="title" :difference="difference" :first_exchange_rate="first_exchange_rate" :second_exchange_rate="second_exchange_rate"/>
-    <ExchangeRateError v-if="error" :error="error" />
+            <input
+                id="date_req2-input"
+                type="date"
+                v-model="date_req2"
+                class="form-control"
+            />
+        </div>
+            <div class="row">
+                <div class="col text-center">
+            <button type="submit" class="btn btn-success">Получить</button>
+                </div>
+            </div>
+        </form>
+        <ExchangeRateResult v-if="result" :title="title" :difference="difference" :first_exchange_rate="first_exchange_rate" :second_exchange_rate="second_exchange_rate"/>
+        <ExchangeRateError v-if="error" :error="error" />
 </div>
 </template>
 
@@ -98,5 +110,10 @@ export default {
 <style>
 table {
     width: 100%
+}
+
+.row{
+  margin-top: 30px;
+  margin-bottom: 30px
 }
 </style>

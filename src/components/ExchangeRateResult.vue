@@ -1,6 +1,6 @@
 <template>
   <div>
-      <table>
+      <table class="table">
           <tr>
               <th>Название</th>
               <th>Курс на первую дату</th>
